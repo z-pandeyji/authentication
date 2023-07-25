@@ -1,9 +1,43 @@
-import React from 'react'
+import React from 'react';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { Username,Profile,Reset,Recovery,Register, PageNotFound, Password } from './components';
 
-const App = () => {
+/** root routes **/
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Username></Username>
+  },
+  {
+    path: '/register',
+    element: <Register></Register>
+  },
+  {
+    path: '/profile',
+    element: <Profile></Profile>
+  },
+  {
+    path: '/password',
+    element: <Password></Password>
+  },
+  {
+    path: '/recovery',
+    element: <Recovery></Recovery>
+  },
+  {
+    path: '/reset',
+    element: <Reset></Reset>
+  },
+  {
+    path: '*',
+    element: <PageNotFound></PageNotFound>
+  }
+])
+
+export default function App() {
   return (
-    <div className='text-3xl font-bold underline'>React Auth</div>
+    <main>
+      <RouterProvider router={router}></RouterProvider>
+    </main>
   )
 }
-
-export default App
